@@ -1,1 +1,96 @@
-print("Hello World!")
+### **Git 常用指令大全**  
+
+Git 是一个强大的分布式版本控制系统，以下是日常开发中最常用的 Git 命令，涵盖**仓库管理、提交、分支、远程同步、撤销更改**等场景。  
+
+---
+
+## **1. 仓库初始化 & 克隆**
+| 命令 | 说明 |
+|------|------|
+| `git init` | 初始化本地 Git 仓库 |
+| `git clone <远程仓库地址>` | 克隆远程仓库到本地（如 `git clone https://github.com/user/repo.git`） |
+
+---
+
+## **2. 提交更改**
+| 命令 | 说明 |
+|------|------|
+| `git status` | 查看当前工作区和暂存区的状态 |
+| `git add <文件名>` | 将文件添加到暂存区（如 `git add index.html`） |
+| `git add .` | 添加所有**新文件和修改**到暂存区（不包含删除） |
+| `git add -A` | 添加**所有更改**（包括新增、修改、删除） |
+| `git commit -m "提交信息"` | 提交暂存区的更改到本地仓库 |
+| `git commit -am "提交信息"` | 直接提交**已跟踪文件**的更改（跳过 `git add`） |
+| `git commit --amend` | 修改最近一次提交（可改提交信息或追加更改） |
+
+---
+
+## **3. 查看历史记录**
+| 命令 | 说明 |
+|------|------|
+| `git log` | 查看提交历史 |
+| `git log --oneline` | 简洁模式查看提交历史 |
+| `git log -p` | 查看提交历史及具体更改内容 |
+| `git log --graph` | 以图形化方式查看分支历史 |
+| `git blame <文件名>` | 查看文件的修改记录（谁改的哪一行） |
+
+---
+
+## **4. 分支管理**
+| 命令 | 说明 |
+|------|------|
+| `git branch` | 查看本地分支 |
+| `git branch <分支名>` | 创建新分支 |
+| `git checkout <分支名>` | 切换到指定分支 |
+| `git switch <分支名>` | （Git 2.23+）切换到指定分支 |
+| `git checkout -b <新分支名>` | 创建并切换到新分支 |
+| `git merge <分支名>` | 合并指定分支到当前分支 |
+| `git branch -d <分支名>` | 删除本地分支 |
+| `git branch -D <分支名>` | **强制删除**本地分支（未合并的分支） |
+| `git push origin --delete <分支名>` | 删除远程分支 |
+
+---
+
+## **5. 远程仓库操作**
+| 命令 | 说明 |
+|------|------|
+| `git remote -v` | 查看远程仓库地址 |
+| `git remote add origin <远程仓库地址>` | 关联远程仓库 |
+| `git push origin <分支名>` | 推送本地分支到远程 |
+| `git push -u origin main` | 首次推送并设置默认上游分支 |
+| `git pull` | 拉取远程最新更改并合并 |
+| `git fetch` | 仅拉取远程最新更改（不自动合并） |
+
+---
+
+## **6. 撤销更改**
+| 命令 | 说明 |
+|------|------|
+| `git restore <文件名>` | 撤销工作区的修改（未 `git add` 的更改） |
+| `git restore --staged <文件名>` | 撤销暂存区的更改（已 `git add` 但未提交） |
+| `git reset --hard HEAD` | 丢弃所有未提交的更改（慎用！） |
+| `git reset --soft HEAD~1` | 撤销最近一次提交，但保留更改到暂存区 |
+| `git reset --hard HEAD~1` | **彻底丢弃**最近一次提交（慎用！） |
+| `git revert <commit-id>` | 撤销某次提交（生成一个新的提交来抵消更改） |
+
+---
+
+## **7. 其他实用命令**
+| 命令 | 说明 |
+|------|------|
+| `git stash` | 临时保存未提交的更改 |
+| `git stash pop` | 恢复最近暂存的更改 |
+| `git diff` | 查看工作区与暂存区的差异 |
+| `git diff --staged` | 查看暂存区与最新提交的差异 |
+| `git tag <标签名>` | 创建标签（如 `git tag v1.0`） |
+| `git push --tags` | 推送所有标签到远程 |
+
+---
+
+### **总结**
+- **提交工作流**：`git add` → `git commit` → `git push`  
+- **分支管理**：`git branch` / `git checkout` / `git merge`  
+- **撤销更改**：`git restore` / `git reset` / `git revert`  
+- **远程协作**：`git pull` / `git fetch` / `git push`  
+
+掌握这些命令，基本可以应对 90% 的 Git 日常操作！ 🚀
